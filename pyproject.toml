@@ -1,0 +1,42 @@
+[project]
+name = "lambda"
+version = "0.1.0"
+description = "Función Lambda para AWS"
+readme = "README.md"
+requires-python = "3.13"
+authors = [
+	{ name = "Kevin Contreras", email = "kvncont@gmail.com" }
+]
+license = { text = "Proprietary" }
+classifiers = [
+	"Programming Language :: Python :: 3.13",
+	"License :: Other/Proprietary License",
+	"Operating System :: OS Independent"
+]
+
+dependencies = [
+	"boto3~=1.0",
+	"botocore~=1.0",
+]
+
+[dependency-groups]
+dev = [
+	"aws-sam-cli~=1.0",
+	"pytest~=7.0",
+	"pytest-cov~=3.0",
+	"ruff~=0.15",
+]
+
+[tool.ruff]
+line-length = 120
+exclude = ["__pycache__", ".venv", ".env", ".git", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

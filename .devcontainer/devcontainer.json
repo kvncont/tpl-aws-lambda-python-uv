@@ -1,0 +1,151 @@
+{
+  "name": "Lambda",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "GitHub.codespaces",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "GitHub.vscode-github-actions",
+        "ms-python.python"
+      ],
+      "mcp": {
+        "servers": {
+          "github": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "headers": {
+              "X-MCP-Toolsets": "default,actions"
+            }
+          },
+          "aws-mcp": {
+            "command": "uvx",
+            "args": [
+              "mcp-proxy-for-aws@latest",
+              "https://aws-mcp.us-east-1.api.aws/mcp"
+            ],
+            "type": "stdio"
+          },
+          "awslabs.aws-serverless-mcp-server": {
+            "command": "uvx",
+            "args": [
+              "awslabs.aws-serverless-mcp-server@latest",
+              "--allow-sensitive-data-access"
+            ],
+            "env": {
+              "AWS_REGION": "us-east-1"
+            }
+          },
+          "awslabs.dynamodb-mcp-server": {
+            "command": "uvx",
+            "args": [
+              "awslabs.dynamodb-mcp-server@latest"
+            ],
+            "env": {
+              "FASTMCP_LOG_LEVEL": "ERROR"
+            }
+          },
+          "awslabs.amazon-sns-sqs-mcp-server": {
+            "command": "uvx",
+            "args": [
+              "awslabs.amazon-sns-sqs-mcp-server@latest"
+            ],
+            "env": {
+              "AWS_REGION": "us-east-1"
+            }
+          }
+        },
+        "inputs": []
+      },
+      "settings": {
+        "tasks": {
+          "version": "2.0.0",
+          "inputs": [
+            {
+              "id": "eventFile",
+              "type": "pickString",
+              "description": "Selecciona el archivo de evento para invocar la Lambda",
+              "options": [
+                "events/api-gateway-event.json",
+                "events/cloudwatch-scheduled-event.json",
+                "events/dynamodb-event.json",
+                "events/s3-event.json"
+              ],
+              "default": "events/cloudwatch-scheduled-event.json"
+            }
+          ],
+          "tasks": [
+            {
+              "label": "Local - Invocar Lambda",
+              "type": "shell",
+              "command": "sam local invoke LambdaFunction --event ${input:eventFile} | jq .",
+              "problemMatcher": [],
+              "group": "test",
+              "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+              }
+            },
+            {
+              "label": "Local - Iniciar API Gateway",
+              "type": "shell",
+              "command": "sam local start-api",
+              "problemMatcher": [],
+              "group": "test",
+              "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+              }
+            }
+          ]
+        },
+        "editor.bracketPairColorization.enabled": true,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.tabSize": 4,
+        "chat.mcp.autostart": "newAndOutdated",
+        "files.encoding": "utf8",
+        "terminal.integrated.scrollback": 20000,
+        "python.languageServer": "Pylance",
+        "[json]": {
+          "editor.defaultFormatter": "vscode.json-language-features",
+          "editor.tabSize": 2
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "vscode.json-language-features",
+          "editor.tabSize": 2
+        },
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit",
+            "source.unusedImports": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.tabSize": 4
+        }
+      }
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gh,target=/home/vscode/.config/gh,type=bind,consistency=cached",
+    "source=profile,target=/root,type=volume",
+    "target=/root/.vscode-server,type=volume"
+  ],
+  "postCreateCommand": "uv sync --group dev"
+}

@@ -1,0 +1,46 @@
+name: CI/CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: kvncont/gh-workflows/.github/workflows/python-uv-ci.yml@main
+    with:
+      zip-name: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-latest.zip
+      artifact-name: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-latest
+      run-tests: true
+      run-coverage: true
+      run-linting: true
+
+#   upload-to-aws-s3:
+#     needs: build
+#     uses: kvncont/gh-workflows/.github/workflows/aws-s3-upload.yml@main
+#     with:
+#       aws-region: ${{ vars.AWS_PRIMARY_REGION || 'us-east-1' }}
+#       aws-role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME || '' }}
+#       s3-bucket: ${{ vars.BUCKET_NAME || github.repository_owner }}-artifacts
+#       s3-prefix: releases/${{ github.event.repository.name }}/latest
+#       artifact-name: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-latest
+#     secrets:
+#       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+#   deploy-dev:
+#     needs: build
+#     uses: kvncont/gh-workflows/.github/workflows/aws-lambda-cd.yml@main
+#     with:
+#       environment: dev
+#       aws-region: ${{ vars.AWS_PRIMARY_REGION || 'us-east-1' }}
+#       aws-role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME || '' }}
+#       lambda-name: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-dev
+#       artifact-name: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-latest
+#       zip-file: ${{ vars.LAMBDA_NAME || github.event.repository.name }}-latest.zip
+#       env-file: config/dev.yml
+#       version-description: "Deploy ${{ github.ref_name }}: latest (${{ github.sha }})"
+#     secrets:
+#       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

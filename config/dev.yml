@@ -1,0 +1,4 @@
+version: latest
+
+env-vars:
+  environment: dev
