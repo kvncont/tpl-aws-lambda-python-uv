@@ -22,7 +22,7 @@ dependencies = [
 [dependency-groups]
 dev = [
 	"aws-sam-cli~=1.0",
-	"pytest~=7.0",
+	"pytest~=9.0",
 	"pytest-cov~=3.0",
 	"ruff~=0.15",
 ]
