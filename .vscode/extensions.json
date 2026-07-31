@@ -1,0 +1,13 @@
+{
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "charliermarsh.ruff",
+    "GitHub.codespaces",
+    "GitHub.copilot-chat",
+    "GitHub.copilot",
+    "GitHub.vscode-github-actions",
+    "ms-python.python"
+  ],
+  // List of extensions recommended to be uninstalled or disabled.
+  "unwantedRecommendations": []
+}

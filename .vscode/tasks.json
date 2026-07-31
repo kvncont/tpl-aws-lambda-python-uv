@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "eventFile",
+      "type": "pickString",
+      "description": "Selecciona el archivo de evento para invocar la Lambda",
+      "options": [
+        "events/api-gateway-event.json",
+        "events/cloudwatch-scheduled-event.json",
+        "events/dynamodb-event.json",
+        "events/s3-event.json"
+      ],
+      "default": "events/cloudwatch-scheduled-event.json"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Local - Invocar Lambda",
+      "type": "shell",
+      "command": "source .venv/bin/activate && sam local invoke LambdaFunction --event ${input:eventFile} | jq .",
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Local - Iniciar API Gateway",
+      "type": "shell",
+      "command": "source .venv/bin/activate && sam local start-api",
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+      }
+    }
+  ]
+}
