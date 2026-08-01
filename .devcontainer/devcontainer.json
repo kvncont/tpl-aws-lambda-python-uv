@@ -7,7 +7,16 @@
     "ghcr.io/devcontainers/features/docker-in-docker:4.0.0": {},
     "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
   },
+  "containerEnv": {
+    "SAM_CLI_TELEMETRY": "0"
+  },
   "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md",
+        "src/lambda_function.py"
+      ]
+    },
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
@@ -19,6 +28,13 @@
       ]
     }
   },
+  "secrets": {
+    "NAME_OF_SECRET_1": {
+      "description": "This is the description of the secret.",
+      "documentationUrl": "https://example.com/link/to/info"
+    },
+    "NAME_OF_SECRET_2": { }
+  },
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
@@ -26,6 +42,5 @@
     "source=profile,target=/root,type=volume",
     "target=/root/.vscode-server,type=volume"
   ],
-  "postCreateCommand": "uv sync --group dev",
-  "postStartCommand": "source .venv/bin/activate"
+  "postCreateCommand": "uv sync --group dev"
 }
