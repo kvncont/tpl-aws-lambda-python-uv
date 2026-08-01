@@ -16,7 +16,19 @@
   ],
   "tasks": [
     {
-      "label": "Local - Invocar Lambda",
+      "label": "Login AWS SSO",
+      "type": "shell",
+      "command": "aws sso login --use-device-code",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Invocar Lambda",
       "type": "shell",
       "command": "sam local invoke LambdaFunction --event ${input:eventFile} | jq .",
       "problemMatcher": [],
@@ -29,7 +41,7 @@
       }
     },
     {
-      "label": "Local - Iniciar API Gateway",
+      "label": "Iniciar API Gateway",
       "type": "shell",
       "command": "sam local start-api",
       "problemMatcher": [],
