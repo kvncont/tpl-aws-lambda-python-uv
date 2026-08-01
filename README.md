@@ -53,6 +53,27 @@ Se recomienda usar `uv venv` para crear el entorno virtual:
 uv venv
 source .venv/bin/activate
 ```
+## Inicio de sesión en AWS con SSO
+
+Antes de ejecutar comandos que accedan a recursos remotos de AWS, inicia sesión con el perfil correspondiente:
+
+```bash
+aws sso login --profile default --use-device-code
+```
+
+El comando mostrará una URL y un código. Abre la URL en el navegador, ingresa el código y completa la autenticación. Si utilizas un perfil distinto de `default`, reemplázalo en el comando.
+
+También puedes iniciar sesión con el task incluido en VS Code:
+
+1. Abre la paleta de comandos con `Ctrl+Shift+P` o `F1` en Windows/Linux, o `Cmd+Shift+P` o `F1` en macOS.
+2. Selecciona `Tasks: Run Task`.
+3. Ejecuta `AWS SSO Login`.
+4. Indica el perfil de AWS que deseas utilizar; el valor predeterminado es `default`.
+5. Completa la autenticación en el navegador con la URL y el código mostrados.
+
+Este paso es importante porque AWS CLI y SAM necesitan credenciales temporales válidas para consultar logs, validar recursos remotos, desplegar o eliminar infraestructura. AWS SSO evita guardar credenciales permanentes en el equipo y aplica los permisos asociados al perfil seleccionado. Si la sesión expira, ejecuta nuevamente el comando o el task.
+
+También debes tener disponible el archivo `~/.aws/config` con la configuración del perfil SSO. En un devcontainer local, este repositorio monta automáticamente el directorio `~/.aws` de la máquina host dentro del contenedor, por lo que el perfil debe estar configurado previamente en el host; consulta la guía de [montaje de archivos locales en un devcontainer](https://code.visualstudio.com/remote/advancedcontainers/add-local-file-mount). En GitHub Codespaces, puedes usar un repositorio de [dotfiles para personalizar Codespaces](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account) y crear `~/.aws/config` durante su instalación. Puedes consultar el formato requerido en la documentación de [configuración de AWS CLI con IAM Identity Center](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html). No incluyas credenciales, tokens ni el contenido de `~/.aws/sso/cache` en los dotfiles; únicamente la configuración no sensible del perfil.
 
 ## Comandos útiles con AWS SAM CLI
 
@@ -70,7 +91,7 @@ source .venv/bin/activate
       - En Windows/Linux: `Ctrl+Shift+P` o `F1`.
       - En macOS: `Cmd+Shift+P` o `F1`.
     2. Busca y selecciona `Tasks: Run Task`.
-    3. Elige la tarea `Local - Iniciar API Gateway`.
+    3. Elige la tarea `Iniciar API Gateway`.
     4. El servidor local iniciará y podrás probar los endpoints en http://localhost:3000.
 
 - **Invocar la función Lambda en local:**
@@ -84,7 +105,7 @@ source .venv/bin/activate
       - En Windows/Linux: `Ctrl+Shift+P` o `F1`.
       - En macOS: `Cmd+Shift+P` o `F1`.
   2. Busca y selecciona `Tasks: Run Task`.
-  3. Elige la tarea `Local - Invocar Lambda`.
+  3. Elige la tarea `Invocar Lambda`.
   4. Selecciona el archivo de evento que quieres usar (por ejemplo, `cloudwatch-scheduled-event.json` o ingresa la ruta de tu archivo).
   5. Revisa la salida en el panel de terminal.
 

@@ -22,7 +22,7 @@
   ],
   "tasks": [
     {
-      "label": "Login AWS SSO",
+      "label": "AWS SSO Login",
       "type": "shell",
       "command": "aws sso login --profile ${input:awsProfile} --use-device-code",
       "problemMatcher": [],
