@@ -5,7 +5,7 @@ import os
 def lambda_handler(event, context):
     """AWS Lambda handler"""
     try:
-        body = event.get("body", {})
+        body = event.get("body") or {}
         if isinstance(body, str):
             body = json.loads(body)
 

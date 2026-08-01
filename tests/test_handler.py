@@ -19,6 +19,14 @@ def test_handler_default_name(context):
     assert body["message"] == "Hello, World!"
 
 
+def test_handler_null_body(context):
+    response = lambda_handler({"body": None}, context)
+
+    assert response["statusCode"] == 200
+    body = json.loads(response["body"])
+    assert body["message"] == "Hello, World!"
+
+
 def test_handler_with_environment(context, monkeypatch):
     monkeypatch.setenv("ENVIRONMENT", "dev")
     response = lambda_handler({"body": '{"name": "TestUser"}'}, context)
