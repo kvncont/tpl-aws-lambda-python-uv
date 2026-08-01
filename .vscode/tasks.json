@@ -12,13 +12,19 @@
         "events/s3-event.json"
       ],
       "default": "events/cloudwatch-scheduled-event.json"
+    },
+    {
+      "id": "awsProfile",
+      "type": "promptString",
+      "description": "Selecciona el perfil de AWS para invocar la Lambda",
+      "default": "default"
     }
   ],
   "tasks": [
     {
       "label": "Login AWS SSO",
       "type": "shell",
-      "command": "aws sso login --use-device-code",
+      "command": "aws sso login --profile ${input:awsProfile} --use-device-code",
       "problemMatcher": [],
       "presentation": {
         "echo": true,
