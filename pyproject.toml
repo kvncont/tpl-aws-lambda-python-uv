@@ -24,7 +24,7 @@ dev = [
 	"aws-sam-cli~=1.166",
 	"pytest~=9.1",
 	"pytest-cov~=7.1",
-	"ruff~=0.15",
+	"ruff~=0.16",
 ]
 
 [tool.ruff]
