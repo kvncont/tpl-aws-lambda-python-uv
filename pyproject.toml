@@ -23,7 +23,7 @@ dependencies = [
 dev = [
 	"aws-sam-cli~=1.0",
 	"pytest~=7.0",
-	"pytest-cov~=3.0",
+	"pytest-cov~=7.1",
 	"ruff~=0.15",
 ]
 
