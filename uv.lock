@@ -48,7 +48,7 @@ wheels = [
 
 [[package]]
 name = "aws-sam-cli"
-version = "1.166.1"
+version = "1.169.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aws-lambda-builders" },
@@ -76,14 +76,14 @@ dependencies = [
     { name = "tzlocal" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9f/f8/af8a25e955ad132e346b1bf036fd479407de3d07fbf89c3e796bd19d39c2/aws_sam_cli-1.166.1.tar.gz", hash = "sha256:32a4c5c1f03211d51d93b58e3cc5f4fb331c3dee4bff4105cbe0a24c71b770b3", size = 7951657, upload-time = "2026-09-04T01:39:17.814Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/eb/4d/4156ce2810daa3361d5708d684ab5c2d68d743f895f8770d418925e8eae2/aws_sam_cli-1.169.0.tar.gz", hash = "sha256:1777145807fb61395d17846084b87260c6d02ad222376154b69fdc977270a15f", size = 7957413, upload-time = "2026-10-13T21:40:06.563Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/e9/72f10ce81031670259620b113bc3a750c21cf15009367df95fb58ee9f4a1/aws_sam_cli-1.166.1-py3-none-any.whl", hash = "sha256:c4abe239d1d481c2810a80bf687b30b6461d358ad9136def8a8f1925caa39004", size = 8309361, upload-time = "2026-09-04T01:39:15.541Z" },
+    { url = "https://files.pythonhosted.org/packages/99/1f/ce7b4bfcd58e73752bc70abd409db446ac78bbb48c75518c18f2434e58b2/aws_sam_cli-1.169.0-py3-none-any.whl", hash = "sha256:0734b86c8ced9d372a0ead5984e828080329c2be587ab2c6691ee9ca1d385809", size = 8312321, upload-time = "2026-10-13T21:40:04.165Z" },
 ]
 
 [[package]]
 name = "aws-sam-translator"
-version = "1.113.0"
+version = "1.115.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "boto3" },
@@ -91,9 +91,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/21/a4/a0d384f9dcd3960fb4942e5665ad4c11f10d92a8ba7f517dd6b11df768a9/aws_sam_translator-1.113.0.tar.gz", hash = "sha256:3a24b3c5bab9c24b6389cdf18a7a745d338363c57803364e028718fb078259e5", size = 380108, upload-time = "2026-08-24T23:12:08.325Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/27/e1/265c488972e373f8bb8f4843c90297e8678e3452e65db7f77e659064c351/aws_sam_translator-1.115.0.tar.gz", hash = "sha256:9766852bd212baa94f240b0b98b82ab1ed5857034bcc87cce5bfc782043d9902", size = 388459, upload-time = "2026-10-12T18:39:30.351Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b8/22/d505dcf1b5e90599655ee7607c44dc756ef866a503e25793ceefd98ba260/aws_sam_translator-1.113.0-py3-none-any.whl", hash = "sha256:b2db7e4f7c6ee8fafa89e718a82bfa33b8e97c4e64be643aa3595b27cd7a2e2b", size = 446355, upload-time = "2026-08-24T23:12:06.769Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/c6/fb9d5df136fb7a03ae8d28eac2a2067bdc30ece0c986784d673efa216648/aws_sam_translator-1.115.0-py3-none-any.whl", hash = "sha256:9be2d7b04041a64e89ed3fb1186f948377ecc118033a8a7538f271d4bcab0afa", size = 455563, upload-time = "2026-10-12T18:39:28.83Z" },
 ]
 
 [[package]]
@@ -143,16 +143,16 @@ wheels = [
 
 [[package]]
 name = "boto3"
-version = "1.43.83"
+version = "1.43.108"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botocore" },
     { name = "jmespath" },
     { name = "s3transfer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/30/96cf7d324e75cd2c349e2911ae2334d987fb8525d551495a2ef6758c26f3/boto3-1.43.83.tar.gz", hash = "sha256:6413d6e99f716af5d333a732db140e4b3359cac005a1271b11777b6d9ca82194", size = 112686, upload-time = "2026-08-28T19:35:52.273Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/48/59/fb93b6ebd9ad43eb9a58c7a6da51a0fe24ab0c04bc4d534a0bfc5eba7f59/boto3-1.43.108.tar.gz", hash = "sha256:03341f089158368acf83e921aca98b706095322ca52bc4c039a616940aa5ad41", size = 112682, upload-time = "2026-10-02T19:32:25.211Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f2/4b/843f30dc77324778efa90c4169d503963668760b8d8abdf26a61bd090141/boto3-1.43.83-py3-none-any.whl", hash = "sha256:73a3564f737d4516625964eee709a498fa98ccee6aca929febad2b0b5fbeae1e", size = 140025, upload-time = "2026-08-28T19:35:49.228Z" },
+    { url = "https://files.pythonhosted.org/packages/74/e4/7e88c40e9f61888e12dac0de41a5fddc2bcd1c3992d9b28e17d915cce0df/boto3-1.43.108-py3-none-any.whl", hash = "sha256:19e9da95ef0c494e27052049a42137550e66730509bb613e76eaa30ddf9a7170", size = 140045, upload-time = "2026-10-02T19:32:23.826Z" },
 ]
 
 [package.optional-dependencies]
@@ -219,16 +219,16 @@ xray = [
 
 [[package]]
 name = "botocore"
-version = "1.43.91"
+version = "1.43.114"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jmespath" },
     { name = "python-dateutil" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9a/1e/c6d26cb1124799e2bee54854813b02aa8a813c57335f97b0b8ed50f902ff/botocore-1.43.91.tar.gz", hash = "sha256:0f12bceb8c5d90a0c60f326e883bf674ded8c7d7c18ee0b559843b3a6c52f2ad", size = 16089153, upload-time = "2026-09-09T19:24:34.426Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/c8/b508359d1f3846a918c06807a9ae27eee063f904559269e42ccde9de09ea/botocore-1.43.114.tar.gz", hash = "sha256:f366fa4db518775632ad1eb128cd8203ca46396cecf37209d904f0bbc049ce90", size = 16369844, upload-time = "2026-10-14T19:24:17.683Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8f/1a/f672cc408d808035397c5d63a1b31a6a56ee95417a9d60d120d96349d182/botocore-1.43.91-py3-none-any.whl", hash = "sha256:f96363d4caf50bce45fe2fdc2d4d86b3bea7f5cd805169d53c1371c2dd4772b6", size = 15782250, upload-time = "2026-09-09T19:24:31.222Z" },
+    { url = "https://files.pythonhosted.org/packages/9a/41/7c6fa7ac5fcfd5ea3c6f32aab001942da32b184a210f39042778cb1ad8ed/botocore-1.43.114-py3-none-any.whl", hash = "sha256:d1c441a22e93e158de5b1e026205f5d6d67a4545d10540c5090c62dccb3a9eca", size = 16067885, upload-time = "2026-10-14T19:24:14.629Z" },
 ]
 
 [package.optional-dependencies]
@@ -599,7 +599,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "aws-sam-cli", specifier = "~=1.166" },
+    { name = "aws-sam-cli", specifier = "~=1.169" },
     { name = "pytest", specifier = "~=9.1" },
     { name = "pytest-cov", specifier = "~=7.1" },
     { name = "ruff", specifier = "~=0.16" },
